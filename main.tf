@@ -46,7 +46,7 @@ resource "aws_internet_gateway" "proj_igw" {
 resource "aws_subnet" "app_subnet" {
   count             = 2
   vpc_id            = aws_vpc.proj_vpc.id
-  availability_zone = data.aws_availability_zone.available[count.index]
+  availability_zone = data.aws_availability_zones.available[count.index]
   cidr_block        = cidrsubnet(var.vpc_cidr_block, 1, count.index)
 }
 
